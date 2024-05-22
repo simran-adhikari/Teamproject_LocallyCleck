@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User OTP Verification</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #fbf6ee; /* Light skin color */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            background-color: #ae9f9fb9; /* Orange with transparency */
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+            max-width: 80%;
+        }
+        .logo {
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: rgba(97, 59, 3, 0.8); /* Green */
+            margin-bottom: 20px;
+        }
+        .pin-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .pin-input {
+            width: 60px;
+            height: 60px;
+            text-align: center;
+            font-size: 24px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            padding: 12px 20px;
+            background-color: rgba(255, 152, 0, 0.8); /* Light green */
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover {
+            background-color: #c5db36; /* Darker shade of light green */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="../resource/logo.png" alt="Company Logo" class="logo" width="100">
+        <h2>Enter OTP</h2>
+        <form action="Cotpcheck.php" method="POST" id="otpForm">
+            <div class="pin-container">
+                <input type="text" class="pin-input" maxlength="1" name="digit1" required onkeyup="moveToNext(this, 'digit2')">
+                <input type="text" class="pin-input" maxlength="1" name="digit2" required onkeyup="moveToNext(this, 'digit3')">
+                <input type="text" class="pin-input" maxlength="1" name="digit3" required onkeyup="moveToNext(this, 'digit4')">
+                <input type="text" class="pin-input" maxlength="1" name="digit4" required>
+            </div>
+            <br>
+            <input type="submit" value="Verify OTP">
+        </form>
+
+        <script>
+            function moveToNext(currentInput, nextInputName) {
+                const maxLength = parseInt(currentInput.getAttribute('maxlength'));
+                const currentLength = currentInput.value.length;
+
+                if (currentLength >= maxLength) {
+                    const nextInput = document.getElementsByName(nextInputName)[0];
+                    if (nextInput) {
+                        nextInput.focus();
+                    }
+                }
+            }
+        </script>
+    </div>
+</body>
+</html>

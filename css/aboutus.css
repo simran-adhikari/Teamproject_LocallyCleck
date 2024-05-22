@@ -1,0 +1,168 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+}
+
+header {
+    background-color: #fbf6ee;
+    padding: 15px;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    max-width: 130px;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 80px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    margin: 20px;
+    margin-left: 100px;
+    padding: 0 20px;
+    background-color: #ece5dfaf;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#about {
+    flex: 1;
+    padding-right: 20px;
+}
+
+.us {
+ 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1em 2em;
+    text-align: center;
+}
+
+span{
+    font-size: 1.3rem;
+    margin-left: 200px;
+}
+.column {
+    flex: 0 0 33.33%;
+    max-width: 33.33%;
+    padding: 1em;
+    box-sizing: border-box;
+}
+
+h1 {
+    width: 100%;
+    text-align: center;
+    font-size: 2.5em;
+    color: #1f003b;
+}
+
+.card {
+    box-shadow: 0 0 2.4em #a2a2a2;
+    padding: 3em 2em;
+    height: 22em;
+    border-radius: 0.6em;
+    color: #1f003b;
+    background-color: #d2c7b8;
+    transition: background 0.5s, color 0.5s;
+}
+
+.card:hover {
+    background: linear-gradient(#fbf6ee, #be965a);
+    color: #ffffff;
+}
+
+.card .img-container {
+    width: 8em;
+    height: 8em;
+    background-color: #b1e4a0;
+    padding: 0.5em;
+    border-radius: 50%;
+    margin: 0 auto 2em auto;
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.card h3 {
+    font-weight: 500;
+}
+
+.card p {
+    font-weight: 300;
+    text-transform: uppercase;
+    margin: 0.5em 0 2em 0;
+    letter-spacing: 2px;
+}
+
+.icons {
+    width: 50%;
+    min-width: 180px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.card a {
+    text-decoration: none;
+    color: inherit;
+    font-size: 1.4em;
+}
+
+.card:hover .img-container {
+    transform: scale(1.15);
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #fbf6ee;
+    margin-top: 20px;
+}
+
+@media screen and (min-width: 768px) {
+    section {
+        padding: 1em 7em;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    section {
+        padding: 1em;
+    }
+
+    .card {
+        padding: 5em 1em;
+    }
+}

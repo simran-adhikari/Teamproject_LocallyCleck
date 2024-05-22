@@ -1,0 +1,377 @@
+* {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    background: #fbf6ee;
+    margin: 0;
+    border: 0;
+    padding: 0px 5%;
+    z-index: 999;
+    position: sticky;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    top: 0;
+    left: 0;
+}
+
+.navdiv {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo img {
+    width: 60px;
+    height: 60px;
+    padding: 10px;
+    padding-right: 3px;
+}
+
+.navdiv li {
+    list-style: none;
+    display: inline-block;
+}
+
+.navdiv li a {
+    color: #65b741;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 15px;
+}
+
+.navdiv li a:hover {
+    color: #ff9800;
+}
+
+.navdiv a i {
+    margin-right: 8px;
+}
+
+.navdiv button {
+    background-color: #ff9800;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.navdiv button a {
+    color: white;
+    font-weight: bold;
+}
+
+.navdiv button:hover {
+    background-color: #d2ec43;
+}
+
+.extra {
+    margin-left: auto; /* Pushes LocallyCleck to the far right */
+}
+
+.extra p a {
+    color: #ff9800;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.extra p a span {
+    color: #65b741;
+}
+
+.welcome {
+    flex: 1; /* Takes up remaining space */
+    text-align: center;
+}
+
+.welcome p {
+    color: #333;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+}
+
+/* Adjusting spacing between Profile and Logout */
+.navdiv ul {
+    display: flex;
+    align-items: center;
+    padding-left: 20px; /* Adjust this value as needed */
+}
+
+.navdiv ul li {
+    margin-right: 20px; /* Adds space between list items */
+}
+
+a:link { 
+    text-decoration: none; 
+  } 
+  a:visited { 
+    text-decoration: none; 
+  } 
+  a:hover { 
+    text-decoration: none; 
+  } 
+  a:active { 
+    text-decoration: none; 
+  }
+
+  /*Dashboard Css */
+  .dashboard-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 200px; /* Adjust the width as needed */
+    background-color: #333; /* Darker background color */
+    color: #fff; /* Text color for menu items */
+    padding-top: 100px; /* Add top padding to create space */
+}
+.main-content {
+    margin-left: 200px; /* Adjust margin to accommodate sidebar width */
+    padding: 20px;
+}
+
+.profile-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.shop-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.profile-details {
+    flex: 1;
+}
+
+.profile-details h2 {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+}
+
+.profile-details p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #555;
+}
+.menu-item {
+    padding: 15px;
+    border-bottom: 1px solid #555; /* Border between menu items */
+}
+
+.menu-item a {
+    display: flex;
+    align-items: center;
+    color: inherit;
+    text-decoration: none;
+}
+
+.menu-item a img {
+    width: 20px; /* Adjust icon size */
+    height: 20px;
+    margin-right: 10px;
+}
+
+.navbar {
+    /* Existing styles for the top navigation bar */
+}
+
+
+
+ /*Product CSS */
+
+
+ .product-page {
+      padding: 20px;
+      margin-left: 220px;
+}
+
+.product-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.product-item img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+.product-details {
+    flex: 1;
+    
+}
+
+.remove-btn {
+    background-color: #ff3333;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.remove-btn i {
+    font-size: 16px;
+}
+
+.product-box{
+    align-items: end;
+
+}
+.add-product-btn {
+    background-color: #65b741; /* Light green background color */
+    color: #fff; /* White text color */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px; /* Rounded corners */
+    margin-right: 20px; /* Adjust margin for positioning */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.add-product-btn:hover {
+    background-color: #4c8f33; /* Darker green on hover */
+}
+
+
+  /*Add Product Css */
+
+  .content {
+    margin-left: 270px; /* Adjust margin to accommodate sidebar width */
+    padding: 20px;
+}
+
+.add-product-container {
+    background-color: #fff;
+    border: 1px dotted #ccc;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.add-product-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.add-product-btn {
+    background-color: #65b741;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.add-product-btn:hover {
+    background-color: #4c8f33;
+}
+
+
+/*Edit Profile CSS */
+
+
+.edit-profile-container {
+    background-color: #fff;
+    border: 1px dotted #ccc;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.edit-profile-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.edit-profile-btn {
+    background-color: #65b741;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.edit-profile-btn:hover {
+    background-color: #4c8f33;
+}
+
+
+
+.order-history{
+    margin-left: 220px; /* Adjust margin to account for dashboard menu width */
+    padding: 20px;
+}
+
+
+
+.order-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    
+}

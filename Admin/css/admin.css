@@ -1,0 +1,93 @@
+/* Reset and global styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.5;
+    background-color: #f8f8f8;
+}
+
+.montserrat-text {
+    color: #333;
+}
+
+/* Navbar styles */
+.navbar {
+    background-color: #fbf6ee;
+    padding: 10px 5%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navdiv {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo img {
+    width: 60px;
+    height: 60px;
+    padding: 10px;
+}
+
+.extra p a {
+    color: #ff9800;
+    font-weight: bold;
+}
+
+.extra p a span {
+    color: #65b741;
+}
+
+.welcome {
+    flex: 1;
+    text-align: center;
+}
+
+.navdiv ul {
+    display: flex;
+    align-items: center;
+}
+
+.navdiv ul li {
+    margin-right: 20px;
+}
+
+.navdiv ul li a {
+    color: #65b741;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.navdiv ul li a:hover {
+    color: #ff9800;
+}
+
+.navdiv button {
+    background-color: #ff9800;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.navdiv button a {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.navdiv button:hover {
+    background-color: #d2ec43;
+}

@@ -1,0 +1,148 @@
+  
+.slider {
+  position: relative;
+  width: 90%;
+  overflow: hidden;
+}
+.images {
+  display: flex;
+  width: 100%;
+}
+.images img {
+  height: 400px;
+  width: 100%;
+  transition: all 0.15s ease;
+}
+.centered-image {
+  display: inline-block; /* Make image a block element */
+  margin: 0 auto; /* Center horizontally using margin */
+}
+.images input {
+  display: none;
+}
+.dots {
+  display: flex;
+  justify-content: center;
+  margin: 5px;
+}
+.dots label {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  border: solid #342a2a 3px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  margin: 5px;
+}
+.dots label:hover {
+  background: #9c2525;
+}
+#img1:checked ~ .m1 {
+  margin-left: 0;
+}
+#img2:checked ~ .m2 {
+  margin-left: -100%;
+}
+#img3:checked ~ .m3 {
+  margin-left: -200%;
+}
+#img4:checked ~ .m4 {
+  margin-left: -300%;
+}
+
+
+
+
+
+
+
+
+
+/* For Product Container */
+
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr)); /* Four columns per row */
+  gap: 20px; /* Spacing between grid items */
+  margin-top: 50px;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+.product-card {
+  text-align: center;
+  background-color: #DCE0E1;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 20px 20px #585858;
+  letter-spacing: 1px;
+}
+
+.product-card img {
+  width: 250px; /* Make image responsive within the card */
+  height: 250px; /* Fixed height for the image */
+  object-fit: cover; /* Ensure image covers the space */
+  border-radius: 25px;
+}
+
+.product-card h3 {
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.product-card p {
+  font-weight: bold;
+  color: #65b741;
+  margin-bottom: 10px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.add-to-cart {
+  padding: 10px 20px;
+  background-color: #8edb91;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-left: 70px;
+
+}
+.checkout-button {
+  padding: 10px 20px;
+  background-color: #8edb91;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-left:30px;
+  transition: background-color 0.3s ease;
+ 
+
+}
+
+.add-to-cart:hover {
+  background-color: #ff9800; /* Darker shade on hover */
+}
+.checkout-button:hover {
+  background-color: #ff9800; /* Darker shade on hover */
+}
+
+.favorite {
+  padding: 10px;
+  background-color: transparent;
+  border: none;
+  color: #ccc;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.favorite:hover {
+  color: red; /* Change heart color to red on hover */
+}

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="../css/traderstyles.css">
+    <title>Signin/Signup</title>
+</head>
+<body>
+        <!---------------------------------SIGNIN----------------------------------------- -->
+        <div class="wrapper">
+            <nav class="nav">
+                <div class="nav-logo">
+                    <a href="../Home.php">
+                        <img src="../resource/logo.png" alt="Logo">
+                      </a>
+                </div>
+                <div class="nav-menu-btn">
+                    <i class="bx bx-menu" onclick="myMenuFunction()"></i>
+                </div>
+            </nav>
+            <div class="nav-button">
+                <button class="btn white-btn" id="loginBtn" onclick="login()">Sign In</button>
+                <button class="btn" id="registerBtn" onclick="register()">Sign Up</button>
+            </div>
+            <form action="Tsignin.php" method="post">
+            <div class="form-box">
+                <div class="login-container" id="login">
+                    <div class="top">
+                    
+                    <div class="input-box">
+                        <input type="text" class="input-field" placeholder="Username or Email" name="username_or_email" required>
+                        <i class="bx bx-user"></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="password" class="input-field" placeholder="Password" name="password" required>
+                        <i class="bx bx-lock-alt"></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="submit" class="submit" value="Sign In">
+                    </div>
+                </div>
+                </div>
+                </form>
+                
+
+
+        
+
+
+        <!---------------------------------SIGNUP----------------------------------------- -->
+        <div class="register-container" id="register">
+            <div class="top">
+                <form action="Tsignup.php" method="post" enctype="multipart/form-data">
+                    <div class="input-box">
+                        <input type="email" class="input-field" placeholder="Email" name="email" required>
+                        <i class="bx bx-envelope"></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="password" class="input-field" placeholder="Password" name="password" required>
+                        <i class="bx bx-lock-alt"></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="text" class="input-field" placeholder="Description" name="description">
+                        <i class="bx bx-book"></i>
+                    </div>
+                    <div class="two-forms1">
+                        <label for="profile-image-upload" class="custom-file-upload">
+                            <span class="custom-file-upload-text">Choose Profile Image</span>
+                        </label>
+                        <input id="profile-image-upload" type="file" name="profile_image" onchange="displayImage(this)" required>
+                        <div id="profile-image-preview"></div>
+    
+                        <label for="banner-image-upload" class="custom-file-upload">
+                            <span class="custom-file-upload-text">Choose Banner Image</span>
+                        </label>
+                        <input id="banner-image-upload" type="file" name="banner_image" onchange="displayImage(this)" required>
+                        <div id="banner-image-preview"></div>
+                    </div>
+                    <div class="two-forms">
+                        <div class="input-box">
+                            <input type="text" class="input-field" placeholder="Trader Name" name="trader_name">
+                            <i class="bx bx-user"></i>
+                        </div>
+                        <div class="input-box">
+                            <input type="text" class="input-field" placeholder="Shop Name" name="shop_name">
+                            <i class="bx bx-home"></i>
+                        </div>
+                    </div>
+                    <div class="input-box">
+                        <select class="input-field" id="shoptype" name="shop_type">
+                            <option value="" disabled selected>Select Shop Type</option>
+                            <option value="Butcher">Butcher</option>
+                            <option value="GreenGrocer">GreenGrocer</option>
+                            <option value="FishMonger">Fisher</option>
+                            <option value="Delicatessen">Deli Foods</option>
+                            <option value="Bakery">Bakery</option>
+                        </select>
+                    </div>
+                    <div class="one">
+                        <input type="checkbox" id="agree" required>
+                        <label for="agree"> I Agree</label>
+                    </div>
+                    <div class="input-box">
+                        <input type="submit" class="submit" value="Upload">
+                    </div>
+                </form>
+            </div>
+        </div>
+</div>   
+
+<script>
+    function myMenuFunction() {
+        var i = document.getElementById("navMenu");
+        if (i.className === "nav-menu") {
+            i.className += " responsive";
+        } else {
+            i.className = "nav-menu";
+        }
+    }
+
+
+    function displayImage(input) {
+    const file = input.files[0];
+    const reader = new FileReader();
+
+    reader.onload = function(e) {
+        const preview = document.getElementById('image-preview');
+        preview.innerHTML = `<img src="${e.target.result}" alt="Uploaded Image" />`;
+    }
+
+    reader.readAsDataURL(file);
+}
+
+
+    function login() {
+        var loginForm = document.getElementById("login");
+        var registerForm = document.getElementById("register");
+        var loginBtn = document.getElementById("loginBtn");
+        var registerBtn = document.getElementById("registerBtn");
+
+        loginForm.style.left = "0";
+        registerForm.style.right = "-100%";
+        loginBtn.classList.add("white-btn");
+        registerBtn.classList.remove("white-btn");
+    }
+
+    function register() {
+        var loginForm = document.getElementById("login");
+        var registerForm = document.getElementById("register");
+        var loginBtn = document.getElementById("loginBtn");
+        var registerBtn = document.getElementById("registerBtn");
+
+        loginForm.style.left = "-100%";
+        registerForm.style.right = "0";
+        loginBtn.classList.remove("white-btn");
+        registerBtn.classList.add("white-btn");
+    }
+</script>
+
+</body>
+</html>

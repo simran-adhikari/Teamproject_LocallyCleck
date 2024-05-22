@@ -1,0 +1,433 @@
+* {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  /*header*/
+  .logo img {
+    width: 60px;
+    height: 60px;
+    padding: 10px;
+    padding-right: 3px;
+  }
+  
+  * {
+    text-decoration: none;
+  }
+  
+  .navbar {
+    background: #fbf6ee;
+    margin: 0;
+    border: 0;
+    padding: 0px 5%;
+    z-index: 999;
+    position: sticky;
+    box-shadow: 0 5px 15px rgb(0, 0, 0, 0.3);
+    top: 0;
+    left: 0;
+  }
+  .navdiv {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .navdiv li {
+    list-style: none;
+    display: inline-block;
+  }
+  
+  .navdiv li a {
+    color: #65b741;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 15px;
+  }
+  .navdiv li a:hover {
+    color: #ff9800;
+  }
+  .navdiv a i {
+    margin-right: 8px;
+  }
+  .navdiv button {
+    background-color: #ff9800;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .navdiv button a {
+    color: white;
+    font-weight: bold;
+  }
+  
+  .navdiv button:hover {
+    background-color: #d2ec43;
+  }
+  
+  .extra {
+    margin-right: auto; /* Pushes the .logo element to the far left */
+  }
+  .extra p a {
+    margin-right: auto;
+    color: #ff9800;
+    font-size: 20px;
+    font-weight: bold; /* Pushes the .logo element to the far left */
+  }
+  
+  .extra p a span {
+    color: #65b741;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .box {
+    width: 30%;
+    height: 1px;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    border: #65b741 solid 3px;
+  }
+  
+  .box > i {
+    font-size: 20px;
+    color: #777;
+  }
+  .box > input {
+    flex: 1;
+    height: 20px;
+    border: none;
+    outline: none;
+    font-size: 12px;
+    padding-right: 10px;
+  }
+  * {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+  }
+  
+  body {
+    margin: 0;
+    padding: 20;
+    background: #d9d9d9;
+  }
+  
+  .navbar {
+    background: #fbf6ee;
+    padding: 0 5%;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  .navdiv {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .navdiv li {
+    list-style: none;
+    display: inline-block;
+  }
+  
+  .navdiv li a {
+    color: #65b741;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 15px;
+  }
+  
+  .navdiv li a:hover {
+    color: #ff9800;
+  }
+  
+  .logo img {
+    width: 60px;
+    height: 60px;
+    padding: 10px;
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropbtn {
+    background-color: #8edb91;
+    color: white;
+    padding: 20px;
+    font-weight: bold;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #D9EDBF;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+/*footer*/
+
+footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    border-top: #bcb1b1 solid 1px;
+    background: #fbf6ee;
+    align-self: end;
+  }
+  
+  footer .col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    padding: 0 50px 0 50px;
+  }
+  
+  footer .col p {
+    padding: 10px 10px 5px 0;
+  }
+  .logof {
+    padding: 10px;
+  }
+  footer .logo {
+    margin-bottom: 30px;
+  }
+  
+  footer h4 {
+    font-size: 16px;
+    padding-bottom: 20px;
+  }
+  
+  footer p {
+    font-size: 14px;
+    margin: 0 0 8px 0;
+  }
+  
+  footer a {
+    font-size: 14px;
+    text-decoration: none;
+    color: #222;
+    margin-bottom: 10px;
+  }
+  
+  footer .follow {
+    cursor: pointer;
+  }
+  
+  footer .install .row img {
+    border: 2px solid #088178;
+    border-radius: 6px;
+  }
+  
+  footer .install img {
+    margin: 10px 0 15px 0;
+  }
+  
+  footer .follow i:hover,
+  footer a:hover {
+    color: rgb(0, 145, 255);
+  }
+  
+  footer .copyright {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* SHOP IMAGES AND BANNER */
+  .banner-container {
+    width: 80%;
+    max-width: 1500px; /* Limit the maximum width of the banner */
+    margin: 20px auto; /* Center the banner container */
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden; /* Hide overflowing content (e.g., large images) */
+    height: 400px;
+}
+
+.banner {
+    width: 100%;
+    height: 400px; /* Maintain aspect ratio */
+}
+
+.profile-container {
+    text-align: center; /* Center align the profile image */
+    margin-top: 20px; /* Add space between banner and profile */
+}
+
+.profile-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%; /* Make the profile image round */
+    border: 3px solid #fff; /* Add a white border */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    object-fit: cover; /* Ensure the image covers the container */
+}
+
+.shop-name {
+    font-size: 24px;
+    color: #333;
+}
+
+
+
+
+
+/* Product Section */
+.best-sellers{
+  margin-bottom: 50px;
+
+}
+
+h2 {
+  font-size: 24px; /* Adjust the font size */
+  color: #333; /* Set the text color */
+  text-align: left; /* Center-align the text */
+  margin-bottom: 20px; /* Add bottom margin for spacing */
+  text-transform: uppercase; /* Convert text to uppercase */
+  letter-spacing: 1px; /* Add letter spacing */
+  font-weight: bold; /* Apply bold font weight */
+  margin-left: 50px;
+}
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr)); /* Four columns per row */
+  gap: 20px; /* Spacing between grid items */
+  margin-top: 50px;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+.product-card {
+  text-align: center;
+  background-color: #DCE0E1;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 20px 20px #585858;
+  letter-spacing: 1px;
+}
+
+.product-card img {
+  width: 250px; /* Make image responsive within the card */
+  height: 250px; /* Fixed height for the image */
+  object-fit: cover; /* Ensure image covers the space */
+  border-radius: 25px;
+}
+
+.product-card h3 {
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.product-card p {
+  font-weight: bold;
+  color: #65b741;
+  margin-bottom: 10px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.add-to-cart {
+  padding: 10px 20px;
+  background-color: #8edb91;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-left: 70px;
+
+}
+.checkout-button {
+  padding: 10px 20px;
+  background-color: #8edb91;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-left:30px;
+  transition: background-color 0.3s ease;
+ 
+
+}
+
+.add-to-cart:hover {
+  background-color: #ff9800; /* Darker shade on hover */
+}
+.checkout-button:hover {
+  background-color: #ff9800; /* Darker shade on hover */
+}
+
+.favorite {
+  padding: 10px;
+  background-color: transparent;
+  border: none;
+  color: #ccc;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.favorite:hover {
+  color: red; /* Change heart color to red on hover */
+}
+
+
+.toastify-style {
+  font-family: 'Arial', sans-serif;
+  font-size: 14px;
+  padding: 12px 16px;
+  border-radius: 6px;
+  position: fixed;
+  top: 20px; /* Adjust top distance from the viewport */
+  right: 20px; /* Adjust right distance from the viewport */
+  z-index: 9999; /* Ensure the toast appears above other content */
+}
+#mapContainer {
+  display: none;
+}
+
+#mapFrame {
+  width: 70%;
+  height: 100px;
+  border: 1px solid #ccc;
+}
