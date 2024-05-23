@@ -370,78 +370,102 @@ em {
 }
 
 /* Similar Product Section */
-
-
 .similar-products-section {
-    background-color: #fdefda;
-    padding: 20px;
-    margin-top: 40px;
-    margin-bottom: 50px;
+  background-color: #fdefda;
+  padding: 20px;
+  margin-top: 40px;
+  margin-bottom: 50px;
 }
 
 .section-title {
-    font-size: 24px;
-    color: #ff9800;
-    text-align: left;
-    margin-left: 8px;
-    font-weight: bold;
-    margin-bottom: 20px;
+  font-size: 24px;
+  color: #ff9800;
+  text-align: left;
+  margin-left: 8px;
+  font-weight: bold;
+  margin-bottom: 20px;
 }
 
 .similar-products-container {
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 10px;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
 }
 
 .similar-product {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(59, 58, 58, 0.1);
-    text-align: center;
-    width: 20%;
-    position: relative; /* Position heart button relative to the product */
-    border-radius: 10%;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(59, 58, 58, 0.1);
+  text-align: center;
+  width: 20%;
+  position: relative;
+  border-radius: 10%;
+  margin: 10px; /* Add margin for spacing between products */
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
 }
+
 .similar-product:hover {
-  transform: scale(1.05); /* Increase card size slightly on hover */
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2); /* Add a subtle shadow on hover */
-  background-color: #Fed8b1;}
+  transform: scale(1.05);
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  background-color: #Fed8b1;
+}
 
 .similar-product img {
-    width:200px;
-    max-width: 200px;
-    height: 200px;
-    border-radius: 8px;
-    margin-bottom: 10px;
+  width: 200px;
+  max-width: 200px;
+  height: 200px;
+  border-radius: 8px;
+  margin-bottom: 10px;
 }
 
 .similar-product-name {
-    font-size: 16px;
-    font-weight: bold;
+  font-size: 16px;
+  font-weight: bold;
 }
 
 .heart-button {
-    position: absolute;
-    top: 30px;
-    right: 17px;
-    background: none;
-    border: none;
-    cursor: pointer;
+  position: absolute;
+  top: 30px;
+  right: 17px;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 .heart-button i {
-    color: #ccc;
-    font-size: 24px;
-    transition: color 0.3s ease;
+  color: #ccc;
+  font-size: 24px;
+  transition: color 0.3s ease;
 }
 
 .heart-button:hover i {
-    color: red;
+  color: red;
 }
 
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .similar-products-container {
+    justify-content: center;
+  }
 
+  .similar-product {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .similar-products-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .similar-product {
+    width: 100%;
+    max-width: 300px;
+  }
+}
 
 
 /* Review Section */

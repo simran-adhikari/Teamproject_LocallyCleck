@@ -200,7 +200,7 @@ echo '</div>'; // Close product-card
             <option value="name_desc">Name: Z to A</option>
         
         </select>
-        <i class="fas fa-sort"></i> <!-- Assuming you have a sort icon -->
+       
     </div>
     <div class="product-list">
         <?php

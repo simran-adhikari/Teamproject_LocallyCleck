@@ -105,7 +105,7 @@ include("header.php");
 
 
             <ul>
-			<li><i class="fa fa-map-marker"></i> Cleckhuddersfax, U.K </li>
+			<li><i class="fa fa-map-marker"></i> Cleckhuddersfax, U.K </li><br>
                 <li><i class="fa fa-phone"></i>  01484 512222</li>
                 <li><i class="fa fa-envelope"></i> locallycleck@gmail.com</li>
             </ul>

@@ -111,7 +111,8 @@ JOIN Category c on c.category_id=product.category_id
 WHERE product.category_id = (SELECT category_id 
                      FROM Product 
                      WHERE product_name = :product_name) 
-AND ROWNUM <= 5";
+                     AND Product_Name != :product_name
+        AND ROWNUM <= 4";
 
 // AND Product_Name != :product_name
 // Prepare and execute the query
