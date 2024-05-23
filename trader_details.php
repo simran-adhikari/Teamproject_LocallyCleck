@@ -26,7 +26,9 @@ session_start();
     />
 
 
-    <title>Document</title>
+    <title>Trader Profile</title>
+    <link rel="icon" type="image/x-icon" href="resource/logo.png" alt="Logo">
+
   </head>
   <body>
 
@@ -39,7 +41,7 @@ include("functionalphp/toaster.php");
 
     <?php
 // Establish database connection
-$connection = oci_connect("diwon", "hackvayo", "//localhost/xe");
+$connection = oci_connect("simran", "simran", "//localhost/xe");
 
 if (!$connection) {
     $error_message = oci_error();
@@ -52,7 +54,7 @@ if (isset($_GET['shop_name'])) {
     $shopName = urldecode($_GET['shop_name']);
 
     // Prepare SQL statement with a bind variable
-    $query = "SELECT BANNERIMAGE, PROFILEIMAGE, SHOP_NAME 
+    $query = "SELECT BANNERIMAGE, PROFILEIMAGE, SHOP_NAME ,DESCRIPTION
               FROM SHOP 
               WHERE SHOP_NAME = :shop_name";
 
@@ -77,11 +79,12 @@ if (isset($_GET['shop_name'])) {
             // Display the profile image below the banner
             echo '<div class="profile-container">';
             echo '<img class="profile-image" src="data:image/jpeg;base64,' . base64_encode($row['PROFILEIMAGE']->load()) . '" alt="Profile Image">';
+           echo' <div class="shop-details">';
             echo '<p class="shop-name">' . htmlspecialchars($row['SHOP_NAME']) . '</p>';
+            echo '<p class="shop-description">' . htmlspecialchars($row['DESCRIPTION']) . '</p>';
             echo '</div>'; // Close profile-container
-        } else {
-            echo 'Trader not found.';
-        }
+            echo'</div>';
+        } 
     } else {
         $error_message = oci_error($stmt);
         echo "Failed to execute query: " . $error_message['message'];

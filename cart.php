@@ -20,7 +20,9 @@ session_start();
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap"
       rel="stylesheet"
     />
-    <title>Document</title>
+    <title>Cart</title>
+    <link rel="icon" type="image/x-icon" href="resource/logo.png" alt="Logo">
+
     <style>
         .styled-button {
             background-color: #4CAF50; /* Green background */

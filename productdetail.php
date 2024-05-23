@@ -8,24 +8,14 @@ session_start();
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Product Card</title>
-  <link rel="icon" type="image/x-icon" href="images/logo.png">
+  <title>Product Detail</title>
+  <link rel="icon" type="image/x-icon" href="resource/logo.png" alt="Logo">
   <link rel="stylesheet" href="css/productdetail.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap"
-      rel="stylesheet"
-    />
-    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-dPfnzG95B6D9gH9+17FZKhZL/8b5uvm+KlF7QZ/oLrS/XGpIl61RtQoSL8lz0IBAsE7RU7etZw9/f3cVn1Hf0w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
   <?php 
 include("header.php");
@@ -72,19 +62,16 @@ if (oci_execute($statement)) {
 
         // Display product details using fetched data
         echo '<div class="product-container">';
-        echo '<div class="product-header">';
-        echo '<h1 class="product-name">' . $product_name . '</h1>';
-        echo '</div>';
         echo '<div class="product-content">';
         echo '<div class="product-image">';
         echo '<img src="data:image/jpeg;base64,' . $image_base64 . '" alt="Product Image">';
         echo '<p class="product-price">£ ' . $product_price . '</p>';
         echo '</div>';
         echo '<div class="product-details">';
+        echo '<p class="product-name">' . $product_name . '</p>';
         echo '<p class="product-description">' . $description . '</p>';
-        echo '<p class="allergy-info"><em>' . $allergy_info . '</em></p>';
-        echo '<p class="allergy-info"><em> Category: ' . $category . '</em></p>';
-        echo '<p class="product-description">Stock: ' . $product_quantity . '</p>';
+        echo '<p class="allergy-info"><em>Allergy Information: ' . $allergy_info . '</em></p>';
+         echo '<p class="product-description">Stock: ' . $product_quantity . '</p>';
         
         echo '<div class="product-actions">';
         echo '<div class="add-to-cart">';
@@ -111,21 +98,20 @@ oci_close($connection);
 <br>
 <br>
  
-<!--Similar Products -->
-<!-- Similat Product Section -->
+<hr>
+<!-- Similar Product Section -->
 
 <?php
 
 include "connect.php";
 
-// SQL query to fetch similar products (limit to 3 for demonstration) update this with category
 $sql = "SELECT image, product_name , product_price, c.category_name
 FROM Product 
 JOIN Category c on c.category_id=product.category_id
 WHERE product.category_id = (SELECT category_id 
                      FROM Product 
                      WHERE product_name = :product_name) 
-AND ROWNUM <= 3";
+AND ROWNUM <= 5";
 
 // AND Product_Name != :product_name
 // Prepare and execute the query
@@ -153,10 +139,6 @@ while (($row = oci_fetch_assoc($stmt)) !== false) {
     echo '</a>'; // Close the <a> tag for the images
     echo '<p class="allergy-info">' . htmlspecialchars($row['CATEGORY_NAME']) . '</p>';
     echo '<p class="similar-product-name">£ ' . htmlspecialchars($row['PRODUCT_PRICE']) . '</p>';
-
-
-    
-   
     echo '<button class="heart-button" onclick="addToWishlist(\'' . $productName . '\')"><i class="far fa-heart"></i></button>';
     
     echo '</div>'; // Close similar-product
@@ -171,7 +153,7 @@ oci_close($connection);
 ?>
 
 
-    
+    <hr>
 
     <h2 class="reviewh2">Customer Reviews</h2>
     <?php

@@ -104,8 +104,8 @@ function sendEmail($email, $otp) {
         $mail->isSMTP();                                            // Send using SMTP
         $mail->Host       = 'smtp.gmail.com';                       // SMTP server
         $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-        $mail->Username   = 'sigdeldiwon@gmail.com';                // SMTP username
-        $mail->Password   = 'xwms qyjh zqix rayt';                  // SMTP password
+        $mail->Username   = 'simranadhikari89@gmail.com';                // SMTP username
+        $mail->Password   = 'qjpa qbot ndqm ypdz';                  // SMTP password
         $mail->SMTPSecure = 'tls';                                  // Enable TLS encryption
         $mail->Port       = 587;                                    // TCP port to connect to
 

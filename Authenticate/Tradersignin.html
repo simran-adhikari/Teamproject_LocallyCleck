@@ -7,7 +7,24 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="../css/traderstyles.css">
     <title>Signin/Signup</title>
+    <link rel="icon" type="image/x-icon" href="../resource/logo.png" alt="Logo">
 </head>
+<style>
+    .image-preview {
+    display: inline-block;
+}
+
+.image-preview img {
+    max-width: 50px; /* Adjust as needed */
+    max-height: 50px; /* Adjust as needed */
+    margin-top: 5px;
+    display: block;
+    float: left;
+    margin-right: 10px;
+}
+
+
+</style>
 <body>
         <!---------------------------------SIGNIN----------------------------------------- -->
         <div class="wrapper">
@@ -53,7 +70,7 @@
         <!---------------------------------SIGNUP----------------------------------------- -->
         <div class="register-container" id="register">
             <div class="top">
-                <form action="Tsignup.php" method="post" enctype="multipart/form-data">
+                <form action="Tsignup.php" method="post" enctype="multipart/form-data" >
                     <div class="input-box">
                         <input type="email" class="input-field" placeholder="Email" name="email" required>
                         <i class="bx bx-envelope"></i>
@@ -63,7 +80,7 @@
                         <i class="bx bx-lock-alt"></i>
                     </div>
                     <div class="input-box">
-                        <input type="text" class="input-field" placeholder="Description" name="description">
+                        <input type="text" class="input-field" placeholder="Description" name="description" required>
                         <i class="bx bx-book"></i>
                     </div>
                     <div class="two-forms1">
@@ -71,26 +88,28 @@
                             <span class="custom-file-upload-text">Choose Profile Image</span>
                         </label>
                         <input id="profile-image-upload" type="file" name="profile_image" onchange="displayImage(this)" required>
-                        <div id="profile-image-preview"></div>
-    
+                        <div id="profile-image-preview" class="image-preview"></div>
+                    
                         <label for="banner-image-upload" class="custom-file-upload">
                             <span class="custom-file-upload-text">Choose Banner Image</span>
                         </label>
                         <input id="banner-image-upload" type="file" name="banner_image" onchange="displayImage(this)" required>
-                        <div id="banner-image-preview"></div>
+                        <div id="banner-image-preview" class="image-preview"></div>
                     </div>
+                    
+                    
                     <div class="two-forms">
                         <div class="input-box">
-                            <input type="text" class="input-field" placeholder="Trader Name" name="trader_name">
+                            <input type="text" class="input-field" placeholder="Trader Name" name="trader_name" required>
                             <i class="bx bx-user"></i>
                         </div>
                         <div class="input-box">
-                            <input type="text" class="input-field" placeholder="Shop Name" name="shop_name">
+                            <input type="text" class="input-field" placeholder="Shop Name" name="shop_name" required>
                             <i class="bx bx-home"></i>
                         </div>
                     </div>
                     <div class="input-box">
-                        <select class="input-field" id="shoptype" name="shop_type">
+                        <select class="input-field" id="shoptype" name="shop_type" required>
                             <option value="" disabled selected>Select Shop Type</option>
                             <option value="Butcher">Butcher</option>
                             <option value="GreenGrocer">GreenGrocer</option>
@@ -127,12 +146,25 @@
     const reader = new FileReader();
 
     reader.onload = function(e) {
-        const preview = document.getElementById('image-preview');
+        const preview = document.getElementById('profile-image-preview');
         preview.innerHTML = `<img src="${e.target.result}" alt="Uploaded Image" />`;
     }
 
     reader.readAsDataURL(file);
 }
+
+function displayImage(input) {
+    const file = input.files[0];
+    const reader = new FileReader();
+
+    reader.onload = function(e) {
+        const preview = document.getElementById('banner-image-preview');
+        preview.innerHTML = `<img src="${e.target.result}" alt="Uploaded Image" />`;
+    }
+
+    reader.readAsDataURL(file);
+}
+
 
 
     function login() {
@@ -158,6 +190,27 @@
         loginBtn.classList.remove("white-btn");
         registerBtn.classList.add("white-btn");
     }
+   
+    function validateForm() {
+        // Get input values
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("password").value;
+        var description = document.getElementById("description").value;
+        var profileImage = document.getElementById("profile-image-upload").value;
+        var bannerImage = document.getElementById("banner-image-upload").value;
+        var traderName = document.getElementById("trader_name").value;
+        var shopName = document.getElementById("shop_name").value;
+        var shopType = document.getElementById("shoptype").value;
+        var agree = document.getElementById("agree").checked;
+
+        // Check if any of the fields are empty
+        if (email === "" || password === "" || description === "" || profileImage === "" || bannerImage === "" || traderName === "" || shopName === "" || shopType === "" || !agree) {
+            alert("Please fill in all the required fields");
+            return false; // Prevent form submission
+        }
+    }
+
+
 </script>
 
 </body>

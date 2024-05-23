@@ -27,7 +27,9 @@ session_start();
     />
 
 
-    <title>Document</title>
+    <title>Wishlist</title>
+    <link rel="icon" type="image/x-icon" href="resource/logo.png" alt="Logo">
+
   </head>
   <body>
 

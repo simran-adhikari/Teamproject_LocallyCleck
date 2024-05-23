@@ -42,7 +42,9 @@ oci_execute($stmt);
     />
 
 
-    <title>Document</title>
+    <title>Locally Cleck</title>
+    <link rel="icon" type="image/x-icon" href="resource/logo.png" alt="Logo">
+
 
 
   </head>
@@ -115,7 +117,7 @@ oci_execute($stmt);
 <!-- Best Product Section -->
 
 <div class="best-sellers">
-    <h2>HOT Sellers</h2>
+    <h2>Best Sellers</h2>
     <div class="product-list">
         <?php
         // Establish a new SQL query to fetch products from the Product table
@@ -185,16 +187,21 @@ echo '</div>'; // Close product-card
 <br>
 
 
-<div class="sort-by">
-        <label for="sort-options">Sort by:</label>
+
+
+    <h2>Check-Out These</h2>
+    <div class="best-sellers">
+    <div class="sort-by-icon">
+        <span>Sort by:</span>
         <select id="sort-options" name="sort-options" onchange="sortProducts()">
             <option value="price_asc">Price: Low to High</option>
             <option value="price_desc">Price: High to Low</option>
+            <option value="name_asc">Name: A to Z</option>
+            <option value="name_desc">Name: Z to A</option>
+        
         </select>
-</div>
-
-<div class="best-sellers">
-    <h2>Other Products</h2>
+        <i class="fas fa-sort"></i> <!-- Assuming you have a sort icon -->
+    </div>
     <div class="product-list">
         <?php
         // Establish a new SQL query to fetch products from the Product table
@@ -208,6 +215,12 @@ echo '</div>'; // Close product-card
             case 'price_desc':
                 $orderBy = "Product_Price DESC";
                 break;
+                case 'name_asc':
+                    $orderBy = "Product_Name ASC";
+                    break;
+                case 'name_desc':
+                    $orderBy = "Product_Name DESC";
+                    break;
             default:
                 $orderBy = "Product_Price ASC";
         }
@@ -295,7 +308,5 @@ include("footer.php");
         window.location.href = `?sort=${sortOption}`;
     }
 </script>
-
-
   </body>
 </html>

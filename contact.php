@@ -80,6 +80,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     />
 
     <title>Contact Us</title>
+    <link rel="icon" type="image/x-icon" href="resource/logo.png" alt="Logo">
+
 </head>
 <body>
 

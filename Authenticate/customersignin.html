@@ -7,6 +7,8 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="../css/customerLogin.css">
     <title>Signin/Signup</title>
+    <link rel="icon" type="image/x-icon" href="../resource/logo.png" alt="Logo">
+    
 </head>
 <body>
         <!---------------------------------SIGNIN----------------------------------------- -->
@@ -49,7 +51,7 @@
         <!---------------------------------SIGNUP----------------------------------------- -->
         <div class="register-container" id="register">
             <div class="top">
-                <label for="file-upload" class="custom-file-upload">
+                <label for="file-upload" class="custom-file-upload" required>
                     <span class="custom-file-upload-text">Choose Profile Image</span>
                 </label>
                 <!-- Updated form tag for signup -->
@@ -69,8 +71,8 @@
                         </div>
                     </div>
                     <div class="input-box">
-                        <input type="email" class="input-field" placeholder="Email" name="email" required>
-                        <i class="bx bx-envelope"></i>
+                        <input type="email" class="input-field" placeholder="Email (youremail@gmail.com)" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\gmail.[a-z]{2,}$" required title="Please enter a valid email address">
+                          <i class="bx bx-envelope"></i>
                     </div>
                     <div class="input-box">
                         <input type="password" class="input-field" placeholder="Password" name="password" required>
@@ -144,6 +146,7 @@
         loginBtn.classList.remove("white-btn");
         registerBtn.classList.add("white-btn");
     }
+    
 </script>
 
 </body>

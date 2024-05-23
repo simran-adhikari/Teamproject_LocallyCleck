@@ -24,6 +24,8 @@ if (isset($_SESSION['display_name'])) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
     <title>Edit Profile</title>
+    <link rel="icon" type="image/x-icon" href="../resource/logo.png" alt="Logo">
+
 </head>
 <body class="montserrat-text">
 
@@ -96,11 +98,11 @@ oci_close($connection);
                 </div>
                 <div class="form-group">
                     <label for="changeShopImage">Change Shop Image:</label>
-                    <input id="profile-image-upload" type="file" name="profile_image" required>
+                    <input id="profile-image-upload" type="file" name="profile_image" >
                 </div>
                 <div class="form-group">
                     <label for="changeShopBanner">Change Shop Banner:</label>
-                    <input id="banner-image-upload" type="file" name="banner_image" required>
+                    <input id="banner-image-upload" type="file" name="banner_image" >
                 </div>
                 <div class="form-group">
                     <label for="changeDescription">Change Description (Shop):</label>

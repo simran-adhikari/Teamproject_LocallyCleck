@@ -2,7 +2,7 @@
 session_start();
 
 // Database connection
-$connection = oci_connect("diwon", "hackvayo", "//localhost/xe");
+$connection = oci_connect("simran", "simran", "//localhost/xe");
 if (!$connection) {
     $error_message = oci_error();
     echo "Failed to connect to Oracle: " . $error_message['message'];
@@ -98,12 +98,14 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] && isset($_SESSION['
             border-color: #1e7e34;
         }
     </style>
-    <title>Profile</title>
+    <title>Customer Profile</title>
+    <link rel="icon" type="image/x-icon" href="resource/logo.png" alt="Logo">
+   
 </head>
 <body>
 <?php include("header.php"); ?>
 
-<a href="orderhistory.php" class="order-history-button">ORDER HISTORY</a>
+<a href="customerorder.php" class="order-history-button">ORDER HISTORY</a>
 
 <div class="container">
     <h2>Your Profile</h2>

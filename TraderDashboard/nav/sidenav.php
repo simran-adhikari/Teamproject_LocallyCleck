@@ -23,4 +23,10 @@
                 Reviews
             </a>
         </div>
+        <div class="menu-item">
+            <a href="../home.php">
+                <img src= alt="Home">
+               View as Customer
+            </a>
+        </div>
     </div>

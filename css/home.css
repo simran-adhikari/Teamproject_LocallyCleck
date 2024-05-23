@@ -6,7 +6,7 @@
   body {
     margin: 0;
     padding: 0;
-    background: #f1e7d6;
+    background: #fbf6ee;
   }
   
   .navbar {
@@ -91,10 +91,10 @@
   }
   
   .trader-box {
-    margin-top: 5px;
     width: 250px;
-    background-color: #e4ebe3;
+    background-color:#bbe5b3;
     padding: 30px;
+    height:400px;
   }
   
   .trader {
@@ -104,8 +104,8 @@
   }
   
   .trader img {
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
     border: 2px solid white;
     border-radius: 50%;
     margin-right: 10px;
@@ -113,15 +113,16 @@
   
   .banner-container {
     overflow: hidden;
-    height: 500px;
+    height: 460px;
+    background-color:#bbe5b3;
   }
   
   .banner {
     display: flex;
     flex-direction: column;
     width: 100%;
-    margin-top: 55px;
-    height: 500px;
+    margin-top: 30px;
+    height: 600px;
   }
   
   .banner-slide {
@@ -249,11 +250,25 @@
 
 .product-card {
     text-align: center;
-    background-color: #DCE0E1;
+    background-color: #dfbe95;
     padding: 20px;
     border-radius: 20px;
-    box-shadow: 0 20px 20px #585858;
+    box-shadow: 0 20px 20px #c19772;
     letter-spacing: 1px;
+    margin-bottom: 10%;
+    margin-right: 10%;
+}
+
+@media screen and (max-width: 768px) {
+  .product-card {
+      width: calc(100% - 40px); /* Adjust width for smaller screens */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .product-card {
+      width: calc(100% - 40px); /* Adjust width for mobile devices */
+  }
 }
 
 .product-card img {
@@ -270,7 +285,7 @@
 
 .product-card p {
     font-weight: bold;
-    color: #65b741;
+    color:  #1c4f05;
     margin-bottom: 10px;
 }
 
@@ -283,7 +298,7 @@
 
 .add-to-cart {
     padding: 10px 20px;
-    background-color: #8edb91;
+    background-color:  #1c4f05;
     color: white;
     border: none;
     border-radius: 10px;
@@ -294,7 +309,7 @@
 }
 .checkout-button {
     padding: 10px 20px;
-    background-color: #8edb91;
+    background-color:  #1c4f05;
     color: white;
     border: none;
     border-radius: 10px;
@@ -316,7 +331,7 @@
     padding: 10px;
     background-color: transparent;
     border: none;
-    color: #ccc;
+    color: #ffffff;
     font-size: 20px;
     cursor: pointer;
 }
@@ -521,13 +536,7 @@ footer {
 }
 
 
-
-
-
-
-
 .image-section {
-  background-color: #e4ebe3;
   width: 100%;
   display: flex;
   justify-content: space-evenly;
@@ -588,6 +597,31 @@ footer {
   font-weight: bold;
   text-align: center;
 } 
+.sort-by-icon {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 20px; /* Adjust margin as needed */
+}
+
+.sort-by-icon span {
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.sort-by-icon select {
+  padding: 5px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+/* Assuming you have a sort icon */
+.sort-by-icon i {
+  margin-left: 10px;
+  color: #65b741; /* Adjust color as needed */
+  cursor: pointer;
+}
+
 .sort-by {
 position: absolute;
 right: 20px;
@@ -608,5 +642,73 @@ border: 1px solid #ccc;
 }
 h7{
   font-style: italic;
-  color: #888;
+  color: #484040;
+}
+
+
+/* For smaller screens */
+@media screen and (max-width: 768px) {
+  .section1 {
+    flex-direction: column;
+    align-items: center; /* Center content vertically */
+  }
+
+  .trader-box {
+    width: 90%; /* Adjust width for smaller screens */
+    margin: 10px auto; /* Center horizontally */
+  }
+
+  .banner-container,
+  .banner {
+    height: auto; /* Adjust height for smaller screens */
+  }
+
+
+  .banner-slide {
+    width: 100%; /* Make banner slides full width */
+  }
+
+  .list .item {
+    width: 90%; /* Adjust width for smaller screens */
+    margin: 0 auto 20px; /* Center horizontally and add bottom margin */
+  }
+}
+
+/* For even smaller screens or mobile devices */
+@media screen and (max-width: 480px) {
+  .navdiv {
+    flex-direction: column; /* Stack navigation vertically */
+    align-items: center; /* Center navigation items horizontally */
+  }
+
+  .navdiv li {
+    margin-bottom: 10px; /
+  }
+
+  .dropdown-content {
+    min-width: 140px; 
+  }
+
+  .sort-by {
+    top: auto; /* Remove absolute positioning for smaller screens */
+    margin-top: 20px; 
+  }
+
+  footer .col {
+    padding: 0 20px; /* Adjust padding for smaller screens */
+  }
+
+  .image-section {
+    height: auto; /* Adjust height for smaller screens */
+  }
+
+  .image-box {
+    width: 70px; /* Adjust image box size for smaller screens */
+    height: 70px; /* Adjust image box size for smaller screens */
+  }
+
+  .image-box img {
+    width: 100%; /* Make images within image boxes full width */
+    height: 100%; 
+  }
 }
