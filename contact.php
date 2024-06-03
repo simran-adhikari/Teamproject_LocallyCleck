@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Check if all fields are filled
     if ($name != "" && $surname != "" && $email != "" && $message != "") {
         // Set up the recipient email address
-        $to = "simranadhikari89@gmail.com";
+        $to = "locallycleck@gmail.com";
 
         // Set up the email subject
         $subject = "Query Contact Us Form";
@@ -31,8 +31,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $mail->isSMTP();                        // Send using SMTP
             $mail->Host       = 'smtp.gmail.com';   // Set the SMTP server to send through
             $mail->SMTPAuth   = true;               // Enable SMTP authentication
-            $mail->Username   = 'simranadhikari89@gmail.com';   // SMTP username
-            $mail->Password   = 'qjpa qbot ndqm ypdz';    // SMTP password
+            $mail->Username   = 'locallycleck@gmail.com';   // SMTP username
+            $mail->Password   = 'tmtk hvqr gitx wmdx';    // SMTP password
             $mail->SMTPSecure = 'tls';              // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
             $mail->Port       = 587;                // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
@@ -105,8 +105,8 @@ include("header.php");
 
 
             <ul>
-			<li><i class="fa fa-map-marker"></i> Cleckhuddersfax, U.K </li><br>
-                <li><i class="fa fa-phone"></i>  01484 512222</li>
+			<li><i class="fa fa-map-marker"></i>  Cleckhuddersfax </li>
+                <li><i class="fa fa-phone"></i> +44 20 1234 5678</li>
                 <li><i class="fa fa-envelope"></i> locallycleck@gmail.com</li>
             </ul>
             <br>

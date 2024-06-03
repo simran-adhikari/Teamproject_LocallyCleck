@@ -41,13 +41,7 @@ include("functionalphp/toaster.php");
 
     <?php
 // Establish database connection
-$connection = oci_connect("simran", "simran", "//localhost/xe");
-
-if (!$connection) {
-    $error_message = oci_error();
-    echo "Failed to connect to Oracle: " . $error_message['message'];
-    exit();
-}
+include("connect.php");
 
 // Retrieve the shop_name parameter from the URL
 if (isset($_GET['shop_name'])) {
@@ -72,18 +66,18 @@ if (isset($_GET['shop_name'])) {
 
         if ($row) {
             // Display trader details within a banner container
-            echo '<div class="banner-container">';
-            echo '<img class="banner" src="data:image/jpeg;base64,' . base64_encode($row['BANNERIMAGE']->load()) . '" alt="Banner Image">';
-            echo '</div>'; // Close banner-container
-
-            // Display the profile image below the banner
-            echo '<div class="profile-container">';
-            echo '<img class="profile-image" src="data:image/jpeg;base64,' . base64_encode($row['PROFILEIMAGE']->load()) . '" alt="Profile Image">';
-           echo' <div class="shop-details">';
-            echo '<p class="shop-name">' . htmlspecialchars($row['SHOP_NAME']) . '</p>';
-            echo '<p class="shop-description">' . htmlspecialchars($row['DESCRIPTION']) . '</p>';
-            echo '</div>'; // Close profile-container
-            echo'</div>';
+            echo "
+            <div class='banner-container'>
+                <img class='banner' src='data:image/jpeg;base64," . base64_encode($row['BANNERIMAGE']->load()) . "' alt='Banner Image'>
+            </div>
+            <div class='profile-container'>
+                <img class='profile-image' src='data:image/jpeg;base64," . base64_encode($row['PROFILEIMAGE']->load()) . "' alt='Profile Image'>
+                <div class='shop-details'>
+                    <p class='shop-name'>" . htmlspecialchars($row['SHOP_NAME']) . "</p>
+                    <p class='shop-description'>" . htmlspecialchars($row['DESCRIPTION']) . "</p>
+                </div>
+            </div>";
+            
         } 
     } else {
         $error_message = oci_error($stmt);
@@ -113,6 +107,8 @@ if (isset($_GET['shop_name'])) {
                        FROM Product 
                        WHERE Shop_ID = (SELECT SHOP_ID FROM SHOP WHERE SHOP_NAME = :shop_name)
                        and isverified='Y'
+                       and 
+                       quantity>2
                        ORDER BY Product_Price DESC";
 
         // Prepare the SQL statement
@@ -142,28 +138,29 @@ if (isset($_GET['shop_name'])) {
                 }
 
                 // Display each product in a card format
-                echo '<div class="product-card">';
-                echo '<a href="productdetail.php?product=' . urlencode($productName) . '">';
-                echo '<img src="data:' . $imageType . ';base64,' . base64_encode($imageData) . '" alt="' . $productName . '">';
-                echo '</a>'; // Close the <a> tag for the images
-                echo '<h3>' . $productName . '</h3>';
-                echo '<p>£ ' . $productPrice . '</p>';
-                echo '<div class="button-container">';
+                echo "
+                <div class='product-card'>
+                    <a href='productdetail.php?product=" . urlencode($productName) . "'>
+                        <img src='data:{$imageType};base64," . base64_encode($imageData) . "' alt='{$productName}'>
+                    </a>
+                    <h3>{$productName}</h3>
+                    <p>£ {$productPrice}</p>
+                    <div class='button-container'>";
                 
-                // Here you can add your button logic (Add to Cart, Favorite, etc.)
-                // Example:
                 if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
                     // User is logged in
-                    echo '<button class="add-to-cart" onclick="addToCart(\'' . $productName . '\', ' . $productPrice . ')">Add to Cart</button>';
-                    echo '<button class="favorite" onclick="addToWishlist(\'' . $productName . '\', ' . $productPrice . ')"><i class="fas fa-heart"></i></button>';
+                    echo "
+                    <button class='add-to-cart' onclick='addToCart(\"{$productName}\", {$productPrice})'>Add to Cart</button>
+                    <button class='favorite' onclick='addToWishlist(\"{$productName}\", {$productPrice})'><i class='fas fa-heart'></i></button>";
                 } else {
                     // User is not logged in
                     $productDetailUrl = 'productdetail.php?product=' . urlencode($productName); // URL to product detail page
-                    echo '<a class="checkout-button" href="' . $productDetailUrl . '">Checkout Product</a>';
+                    echo "<a class='checkout-button' href='{$productDetailUrl}'>View Product</a>";
                 }
                 
-                echo '</div>'; // Close button-container
-                echo '</div>'; // Close product-card
+                echo "
+                    </div> <!-- Close button-container -->
+                </div>"; // Close product-card
             }
         } else {
             $error_message = oci_error($productStmt);

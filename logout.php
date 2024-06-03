@@ -7,7 +7,7 @@ $_SESSION = array();
 // Destroy the session
 session_destroy();
 
-// Redirect to the login page or any other desired location after logout
+// Redirect to the Home page
 header("Location: Home.php");  //redirect to homepage
 exit;
 ?>

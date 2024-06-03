@@ -1,6 +1,11 @@
 <?php
 
 session_start();
+if (!isset($_SESSION['user_id'])) {
+  // Redirect to login page if user is not logged in
+  header("Location: Home.php");
+  exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -75,8 +80,12 @@ if (isset($_POST['delete'])) {
 // SQL query to fetch cart items and corresponding product details
 $sql = "SELECT p.Product_ID, p.Product_Name, p.Product_Price, p.Image
         FROM WISHLIST_PRODUCT w 
-        INNER JOIN PRODUCT p ON w.PRODUCT_ID = p.PRODUCT_ID 
-        WHERE w.WISHLIST_ID = :user_id";
+        INNER JOIN PRODUCT p ON w.PRODUCT_ID = p.PRODUCT_ID
+        WHERE p.isverified='Y' 
+        AND
+        p.quantity > 2
+        AND
+        w.WISHLIST_ID = :user_id";
 
 // Prepare the SQL statement
 $stmt = oci_parse($connection, $sql);
@@ -107,40 +116,37 @@ while ($row = oci_fetch_assoc($stmt)) {
 
     // Display each cart item
 
-    echo '<div class="product-section">';
-    echo '<div class="cart-item">';
-    echo '<a href="productdetail.php?product=' . urlencode($productName) . '">';
-    echo '<img src="data:' . $imageType . ';base64,' . $encodedImageData . '" alt="' . $productName . '" class="product-image">';
-    echo '</a>'; // Close the <a> tag for the images
-    echo '<div class="product-details">';
-    echo '<h3>' . $productName . '</h3>';
-    echo '<p>Price: $' . $productPrice . '</p>';
-
-    echo '<form method="POST">';
-    echo '<input type="hidden" name="product_id" value="' . $productId . '">';
-    echo '</form>';
-
-
-
-    echo '</div>'; // Close product-details
-
-
-    echo '<div class="delete-container">';
-    echo '<form method="POST">';
-    echo '<input type="hidden" name="product_id" value="' . $productId . '">';
-    echo '<button type="submit" name="delete" button class="delete-btn" >Delete</button>';
-    echo '</form>';
-    echo '</div>'; // Close delete-container
-
-
-
-    echo '</div>'; // Close cart-item
+    echo "
+    <div class='product-section'>
+        <div class='cart-item'>
+            <a href='productdetail.php?product=" . urlencode($productName) . "'>
+                <img src='data:{$imageType};base64,{$encodedImageData}' alt='{$productName}' class='product-image'>
+            </a>
+            <div class='product-details'>
+                <h3>{$productName}</h3>
+                <p>Price: $ {$productPrice}</p>
+                <form method='POST'>
+                    <input type='hidden' name='product_id' value='{$productId}'>
+                </form>
+            </div>
+            <button class='cart-btn' onclick='addToCart(\"" . addslashes($productName) . "\", " . htmlspecialchars($productPrice) . ")'>Add to Cart</button>
+            
+            <div class='delete-container'>
+                <form method='POST'>
+                    <input type='hidden' name='product_id' value='{$productId}'>
+                    <button type='submit' name='delete' class='delete-btn'>Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>";
+    
 }
 ?>
 
  
 <?php
 include("footer.php");
+include("functionalphp/toaster.php");
 ?>
 
   </body></html>

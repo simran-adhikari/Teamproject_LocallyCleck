@@ -2,13 +2,7 @@
 session_start();
 
 // Database connection
-$connection = oci_connect("simran", "simran", "//localhost/xe");
-if (!$connection) {
-    $error_message = oci_error();
-    echo "Failed to connect to Oracle: " . $error_message['message'];
-    exit();
-}
-
+include("connect.php");
 // Variable to hold the update result
 $update_success = false;
 
@@ -39,7 +33,7 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] && isset($_SESSION['
         $first_name = $_POST['first_name'];
         $last_name = $_POST['last_name'];
         $email = $_POST['email'];
-        $password = $_POST['password']; // Assuming password is not hashed for simplicity, but it should be hashed in production
+        $password = $_POST['password']; //We havent hashed the pasowrd
         $gender = $_POST['gender'];
         // Assuming other fields exist in your form
 
@@ -78,6 +72,9 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] && isset($_SESSION['
         crossorigin="anonymous"
         referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet" />
+    <title>Customer Profile</title>
+    <link rel="icon" type="image/x-icon" href="resource/logo.png" alt="Logo">
+
     <style>
         .order-history-button {
             background-color: #28a745;
@@ -98,14 +95,12 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] && isset($_SESSION['
             border-color: #1e7e34;
         }
     </style>
-    <title>Customer Profile</title>
-    <link rel="icon" type="image/x-icon" href="resource/logo.png" alt="Logo">
-   
+    <title>Profile</title>
 </head>
 <body>
 <?php include("header.php"); ?>
 
-<a href="customerorder.php" class="order-history-button">ORDER HISTORY</a>
+
 
 <div class="container">
     <h2>Your Profile</h2>
