@@ -5,99 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search Products</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <link rel="icon" type="image/x-icon" href="resource/logo.png" alt="Logo">
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <style>
-       .navdiv {
-            display: flex;
-            align-items: center;
-        }
-        .box {
-            position: relative;
-        }
-        
-        .box .fa-search {
-            position: absolute;
-            top: 50%;
-            right: 10px;
-            transform: translateY(-50%);
-            cursor: pointer;
-        }
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #f9f9f9;
-            min-width: 160px;
-            z-index: 1;
-        }
-
-        .dropdown-content a {
-           
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-        }
-
-       
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-        ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            align-items: center;
-        }
-
-        ul li {
-            margin-right: 10px; /* Adjust spacing as needed */
-        }
-
-        ul li a {
-           
-            text-decoration: none;
-        }
-
-        /* Media queries for responsive design */
-
-        @media screen and (max-width: 768px) {
-            .navbar {
-                flex-direction: column;
-                padding: 10px;
-            }
-
-            .navdiv {
-                margin-bottom: 10px;
-            }
-
-            .box input[type="text"] {
-                width: 100%; /* Full width input */
-            }
-
-            ul {
-                justify-content: center;
-            }
-
-            ul li {
-                margin: 0 5px;
-            }
-        }
-
-        @media screen and (max-width: 576px) {
-            .logo img {
-                width: 40px; /* Smaller logo size */
-            }
-        }
-        </style>
 </head>
-
 <nav class="navbar">
         <div class="navdiv">
             <div class="logo">

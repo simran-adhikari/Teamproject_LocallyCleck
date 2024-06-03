@@ -1,5 +1,10 @@
 <?php
 session_start();
+if (!isset($_SESSION['user_id'])) {
+    // Redirect to login page if user is not logged in
+    header("Location: Home.php");
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,6 +30,8 @@ session_start();
     />
 
     <title>Order History</title>
+    <link rel="icon" type="image/x-icon" href="resource/logo.png" alt="Logo">
+
     <style>
         .order-container {
             border: 1px solid #ccc;
@@ -104,16 +111,15 @@ include("header.php");
         $order_time = $row['ORDER_TIME'];
         $order_day = $row['ORDER_DAY'];
 
-        echo "<div class='order-container'>";
-        echo "<div class='order-header'>Order ID: {$order_id}</div>";
-        echo "<div class='order-body'>";
-        echo "<p>Order Date: {$order_date}</p>";
-        echo "<p>Order Total: £{$order_total}</p>";
-        echo "<p>Order Time: {$order_time}</p>";
-        echo "<p>Order Day: {$order_day}</p>";
-
-        // Fetch product details for this order
-        echo "<div class='product-list'><strong>Products:</strong><br>";
+        echo "
+        <div class='order-container'>
+            <div class='order-header'>Order ID: {$order_id}</div>
+            <div class='order-body'>
+                <p>Order Date: {$order_date}</p>
+                <p>Order Total: £{$order_total}</p>
+                <p>Order Time: {$order_time}</p>
+                <p>Order Day: {$order_day}</p>
+                <div class='product-list'><strong>Products:</strong><br>";
         $product_query = "
             SELECT P.PRODUCT_NAME, OP.QUANTITY
             FROM Order_Product OP

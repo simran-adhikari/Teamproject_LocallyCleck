@@ -181,6 +181,7 @@ function showSlides() {
         // Establish a new SQL query to fetch products from the Product table for the given category_id
         $productSql = "SELECT Image, Product_Name, Product_Price FROM Product WHERE Category_ID = :category_id
          and isVerified='Y'
+         and quantity>2
          ORDER BY Product_Price DESC";
 
         // Prepare the SQL statement
@@ -212,27 +213,29 @@ function showSlides() {
             }
 
             // Display each product in a card format
-            echo '<div class="product-card">';
-            echo '<a href="productdetail.php?product=' . urlencode($productName) . '">';
-            echo '<img src="data:' . $imageType . ';base64,' . $encodedImageData . '" alt="' . $productName . '">';
-            echo '</a>'; // Close the <a> tag for the images
-            echo '<h3>' . $productName . '</h3>';
-            echo '<p>£ ' . $productPrice . '</p>';
-
-            echo '<div class="button-container">';
-
+            echo "
+            <div class='product-card'>
+                <a href='productdetail.php?product=" . urlencode($productName) . "'>
+                    <img src='data:{$imageType};base64,{$encodedImageData}' alt='{$productName}'>
+                </a>
+                <h3>{$productName}</h3>
+                <p>£ {$productPrice}</p>
+                <div class='button-container'>";
+            
             if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
                 // User is logged in
-                echo '<button class="add-to-cart" onclick="addToCart(\'' . $productName . '\', ' . $productPrice . ')">Add to Cart</button>';
-                echo '<button class="favorite" onclick="addToWishlist(\'' . $productName . '\', ' . $productPrice . ')"><i class="fas fa-heart"></i></button>';
+                echo "
+                <button class='add-to-cart' onclick='addToCart(\"{$productName}\", {$productPrice})'>Add to Cart</button>
+                <button class='favorite' onclick='addToWishlist(\"{$productName}\", {$productPrice})'><i class='fas fa-heart'></i></button>";
             } else {
                 // User is not logged in
                 $productDetailUrl = 'productdetail.php?product=' . urlencode($productName); // URL to product detail page
-                echo '<a class="checkout-button" href="' . $productDetailUrl . '">Checkout Product</a>';
+                echo "<a class='checkout-button' href='{$productDetailUrl}'>View Product</a>";
             }
-
-            echo '</div>'; // Close button-container
-            echo '</div>'; // Close product-card
+            
+            echo "
+                </div> <!-- Close button-container -->
+            </div>"; // Close product-card
         }
         ?>
     </div>    </div>    

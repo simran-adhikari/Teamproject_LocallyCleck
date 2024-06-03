@@ -1,5 +1,10 @@
 <?php
 session_start();
+if (!isset($_SESSION['user_id'])) {
+    // Redirect to login page if user is not logged in
+    header("Location: Home.php");
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,12 +25,13 @@ session_start();
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Cart</title>
-    <link rel="icon" type="image/x-icon" href="resource/logo.png" alt="Logo">
-
+    <link rel="icon" type="image/x-icon" href="resource/logo.png" alt="Logo" />
     <style>
         .styled-button {
-            background-color: #4CAF50; /* Green background */
+            background-color: #ff9800; /* Green background */
             border: none; /* Remove borders */
             color: white; /* White text */
             padding: 15px 32px; /* Some padding */
@@ -44,6 +50,24 @@ session_start();
             color: black; /* Black text on hover */
             border: 2px solid #4CAF50; /* Green border on hover */
         }
+        .order-history-button {
+            background-color: #28a745;
+            color: white;
+            border: 2px solid #218838;
+            border-radius: 8px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+            margin-left: 20px;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+        .order-history-button:hover {
+            background-color: #218838;
+            border-color: #1e7e34;
+        }
     </style>
   </head>
   
@@ -52,7 +76,7 @@ session_start();
   <?php
   include("header.php");
   ?>
-
+<a href="customerorder.php" class="order-history-button">ORDER HISTORY</a>
 <h1>YOUR CART</h1>
 <?php
 include "connect.php"; // Database connection
@@ -97,10 +121,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 // SQL query to fetch cart items and corresponding product details
-$sql = "SELECT p.Product_ID, p.Product_Name, p.Product_Price, p.Image, cp.Quantity
+$sql = "SELECT p.Product_ID, p.Product_Name, p.Product_Price, p.Image, cp.Quantity, p.Quantity AS AvailableQuantity
         FROM product p
         JOIN cart_product cp ON p.Product_ID = cp.Product_ID
-        WHERE cp.Cart_ID = :userId";
+        WHERE p.isverified='Y'
+        and p.quantity>2
+        and cp.Cart_ID = :userId";
 
 // Prepare the SQL statement
 $stmt = oci_parse($connection, $sql);
@@ -119,6 +145,8 @@ while ($row = oci_fetch_assoc($stmt)) {
     $productName = $row['PRODUCT_NAME'];
     $productPrice = $row['PRODUCT_PRICE'];
     $quantity = $row['QUANTITY'];
+    $availableQuantity = $row['AVAILABLEQUANTITY'];
+    $maxOrderQuantity = min(20, $availableQuantity);
     $imageData = $row['IMAGE']->load();
 
     // Encode the BLOB data as base64
@@ -134,51 +162,45 @@ while ($row = oci_fetch_assoc($stmt)) {
     }
 
     // Display each cart item
-    echo '<div class="product-section">';
-    echo '<div class="cart-item">';
-    echo '<a href="productdetail.php?product=' . urlencode($productName) . '">';
-    echo '<img src="data:' . $imageType . ';base64,' . $encodedImageData . '" alt="' . $productName . '" class="product-image">';
-    echo '</a>'; // Close the <a> tag for the images
-    echo '<div class="product-details">';
-    echo '<h3>' . $productName . '</h3>';
-    echo '<p>Price: $' . $productPrice . '</p>';
-
-    echo '<form method="POST">';
-    echo '<input type="hidden" name="product_id" value="' . $productId . '">';
-    echo '<div class="quantity-container">';
-    echo '<label for="quantity_' . $productId . '">Quantity:</label>';
-    echo '<input type="number" id="quantity_' . $productId . '" name="quantity" value="' . $quantity . '" min="1" max="20" class="quantity-input">';
-    echo '<button type="submit" name="update" button class="delete-btn">Update</button>';
-    echo '</div>'; // Close quantity-container
-    echo '</form>';
-
-    echo '</div>'; // Close product-details
-
-    echo '<div class="delete-container">';
-    echo '<form method="POST">';
-    echo '<input type="hidden" name="product_id" value="' . $productId . '">';
-    echo '<button type="submit" name="delete" button class="delete-btn" >Delete</button>';
-    echo '</form>';
-    echo '</div>'; // Close delete-container
-
-    echo '</div>'; // Close cart-item
-    echo '</div>';
-    echo '</div>';
+    echo "
+    <div class='product-section'>
+        <div class='cart-item'>
+            <a href='productdetail.php?product=" . urlencode($productName) . "'>
+                <img src='data:{$imageType};base64,{$encodedImageData}' alt='{$productName}' class='product-image'>
+            </a>
+            <div class='product-details'>
+                <h3>{$productName}</h3>
+                <p>Price: $ {$productPrice}</p>
+                <form method='POST'>
+                    <input type='hidden' name='product_id' value='{$productId}'>
+                    <div class='quantity-container'>
+                        <label for='quantity_{$productId}'>Quantity:</label>
+                        <input type='number' id='quantity_{$productId}' name='quantity' value='{$quantity}' min='1' max='{$maxOrderQuantity}' class='quantity-input'>
+                        <button type='submit' name='update' class='delete-btn'>Update</button>
+                    </div> <!-- Close quantity-container -->
+                </form>
+            </div> <!-- Close product-details -->
+            <div class='delete-container'>
+                <form method='POST'>
+                    <input type='hidden' name='product_id' value='{$productId}'>
+                    <button type='submit' name='delete' class='delete-btn'>Delete</button>
+                </form>
+            </div> <!-- Close delete-container -->
+        </div> <!-- Close cart-item -->
+    </div>"; // Close product-section
 }
-
 if ($cartIsEmpty) {
     echo '<p>Your cart is empty.</p>';
 } else {
     // Only display the order section if the cart is not empty
-    echo '<h2 class="orderheader">Place Order</h2>';
-    echo '<div class="order-section">';
-    echo '<div class="order-box">';
-
-    echo '<form method="POST" action="OrderHandle/placeorder.php">';
-    echo '<input type="hidden" name="user_id" value="' . $userId . '">';
-    
-    echo '<label for="collection-day">Collection Day:</label>';
-    echo '<select id="collection-day" name="collection-day">';
+    echo "
+    <h2 class='orderheader'>Place Order</h2>
+    <div class='order-section'>
+        <div class='order-box'>
+            <form method='POST' action='OrderHandle/placeorder.php'>
+                <input type='hidden' name='user_id' value='{$userId}'>
+                <label for='collection-day'>Collection Day:</label>
+                <select id='collection-day' name='collection-day'>";
     // Get the current day of the week (0 = Sunday, 1 = Monday, ..., 6 = Saturday)
     $currentDayOfWeek = date('w');
     // Define available options based on the current day
@@ -259,7 +281,7 @@ include("footer.php");
 ?>
 
 </body>
-  <script>
+<script>
     function applyPromo(event) {
         // Prevent form submission
         event.preventDefault();
@@ -272,20 +294,30 @@ include("footer.php");
         } else if (promoInput.trim().toUpperCase() === 'PROMO25') {
             applyPromo25();
         } else {
-            alert('Invalid promo code. Please enter a valid promo code.');
+            Swal.fire({
+                icon: 'error',
+                title: 'Invalid Promo Code',
+                text: 'Please enter a valid promo code.',
+            });
         }
     }
 
     function applyDefaultPromo() {
         // Set default promo code 'xyz'
-        alert('No Promo Code To Apply!');
-        // Here you can apply the promo code 'xyz' logic (e.g., submit form with 'xyz')
+        Swal.fire({
+            icon: 'warning',
+            title: 'No Promo Code',
+            text: 'No Promo Code To Apply!',
+        });
     }
 
     function applyPromo25() {
         // Apply promo code 'PROMO25'
-        alert('Applying promo code: PROMO25');
-        // Here you can apply the promo code 'PROMO25' logic (e.g., submit form with 'PROMO25')
+        Swal.fire({
+            icon: 'success',
+            title: 'Promo Code Applied',
+            text: 'Applying promo code: PROMO25',
+        });
     }
-  </script>
+</script>
 </html>
